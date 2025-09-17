@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compliance e LGPD | APinformação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --dark-blue:#194a86;
+      --medium-blue:#2693ab;
+      --light-blue:#e0f2f7;
+      --accent-color:#007bff;
+      --text-color:#333;
+      --muted:#666;
+      --card-shadow: 0 4px 10px rgba(24,38,63,0.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:'Roboto',sans-serif;
+      margin:0;
+      color:var(--text-color);
+      background:#f7f7f7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ---------- HEADER (padrão das páginas anteriores) ---------- */
+    /* ---------- HEADER UNIFICADO ---------- */
+header {
+    background: linear-gradient(90deg, var(--dark-blue), var(--medium-blue));
+    padding: 0 20px;
+    height: 72px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    height: 100%;
+    padding-right: 12px;
+}
+
+.header-logo img {
+    max-height: 64px;
+    max-width: 220px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.header-nav {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    white-space: nowrap; /* garante menu em linha */
+    overflow: visible;   /* permite exibir dropdown */
+}
+
+.header-nav a,
+.header-nav span {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.header-nav a:hover,
+.header-nav span:hover {
+    color: var(--light-blue);
+    transform: scale(1.05);
+}
+
+.header-nav li {
+    position: relative;
+}
+
+.header-nav li .dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: -15px; /* igual na principal */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    min-width: 220px;
+    z-index: 1000;
+    border-radius: 5px;
+    text-align: left;
+    transition: visibility 0s, opacity 0.3s linear;
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    font-weight: 400;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    color: var(--medium-blue);
+    background-color: #f0f8fa;
+}
+
+.header-nav li:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+.header-cta {
+    flex: 0 0 auto;
+    margin-left: 12px;
+}
+
+.header-cta a {
+    background-color: white;
+    color: var(--dark-blue);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.header-cta a:hover {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    header {
+        height: 60px;
+        padding: 0 12px;
+        justify-content: center;
+    }
+    .header-logo img {
+        max-height: 46px;
+        max-width: 160px;
+    }
+    .header-nav ul {
+        display: none;
+    }
+    .header-cta {
+        display: none;
+    }
+}
+    /* ---------- Hero ---------- */
+    .hero{background: linear-gradient(180deg, rgba(38,147,171,0.06), rgba(224,242,247,0.4));padding:56px 20px;text-align:center;color:var(--dark-blue);}
+    .hero .container{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:980px}
+    .hero h1{font-size:2.4rem;margin:0;font-weight:700}
+    .hero p{margin:0 0 12px;color:var(--muted);font-size:1.05rem;line-height:1.5}
+    .btn{display:inline-block;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--accent-color);color:#fff}
+
+    /* ---------- Sections ---------- */
+    .section{padding:48px 20px;margin-top:18px;background:#fff;border-radius:10px;box-shadow:var(--card-shadow)}
+    .section h2{color:var(--dark-blue);text-align:center;margin:0 0 14px;font-size:1.8rem}
+    .lead{max-width:820px;margin:0 auto;color:var(--muted);text-align:center;line-height:1.6}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:22px}
+    .card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 6px 18px rgba(15,35,60,0.04);border:1px solid #f0f6f9;display:flex;flex-direction:column;gap:12px}
+    .card h3{margin:0;font-size:1.1rem;color:var(--medium-blue)}
+    .card p{margin:0;color:var(--muted)}
+    .feature-row{display:flex;gap:16px;align-items:flex-start}
+    .feature-ico{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .feature-ico svg{width:28px;height:28px}
+
+    /* ---------- Footer ---------- */
+    footer{background:var(--dark-blue);color:#fff;padding:20px;text-align:center;margin-top:22px}
+    footer a{color:var(--light-blue);text-decoration:none}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-logo">
+      <a href="https://sacapinformacao.github.io/Site/">
+        <img src="https://raw.githubusercontent.com/sacapinformacao/clientes/36d5eab5b6cf22741d66c95eae5857a60141dee2/logo%20novo%20branco%20copiar.png" alt="AP Informação Logo">
+      </a>
+    </div>
+    <nav class="header-nav">
+      <ul>
+        <li>
+          <span>Serviços</span>
+          <ul class="dropdown-menu">
+            <li><a href="https://sacapinformacao.github.io/BackGroundCheck/">Background Check</a></li>
+            <li><a href="https://sacapinformacao.github.io/Veiculos/">Análise de Veículos</a></li>
+            <li><a href="https://sacapinformacao.github.io/Enriquecimento/">Enriquecimento de Dados</a></li>
+            <li><a href="https://apinformacao.net.br/site/lgpd/">Compliance e LGPD</a></li>
+          </ul>
+        </li>
+        <li>
+          <span>Setores</span>
+          <ul class="dropdown-menu">
+            <li><a href="https://sacapinformacao.github.io/Landpage-Advocacia/">Jurídico</a></li>
+            <li><a href="https://sacapinformacao.github.io/lanpage-Im-veis/">Imobiliário</a></li>
+            <li><a href="https://sacapinformacao.github.io/Landpage-Industrias/">Industrial</a></li>
+          </ul>
+        </li>
+        <li><a href="https://apinformacao.net.br/site/planos/">Planos</a></li>
+        <li><a href="https://apinformacao.net.br/site/sobre-nos/">Sobre Nós</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="https://api.whatsapp.com/send?phone=5511948962888&text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20AP%20Informação.">Fale Conosco</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Compliance e LGPD — Proteção e Credibilidade para sua Empresa</h1>
+      <p>A conformidade legal não é um obstáculo, mas uma estratégia. Oferecemos soluções que garantem que sua empresa, escritório ou indústria esteja segura, competitiva e em total alinhamento com as normas da LGPD e as melhores práticas de governança.</p>
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=5511948962888&text=Olá!%20Quero%20saber%20mais%20sobre%20as%20soluções%20de%20Compliance%20e%20LGPD." target="_blank">Quero me proteger</a>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Por que o Compliance é essencial?</h2>
+    <p class="lead">Seja na advocacia, indústria ou setor imobiliário, lidar com dados pessoais e corporativos exige responsabilidade. Nossas soluções de compliance e LGPD garantem que você possa gerenciar riscos, evitar multas e fortalecer a confiança de clientes e parceiros, transformando a segurança em um diferencial competitivo.</p>
+  </section>
+
+  <section class="section container" id="funcionalidades">
+    <h2>Módulos da Solução de Compliance</h2>
+    <p class="lead">Recursos que ajudam a mitigar riscos e assegurar a conformidade em todas as suas operações.</p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#e0f2f7"><svg fill="#2693ab" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M11 15h2v2h-2zm0-8h2v6h-2z"/></svg></div>
+          <div>
+            <h3>Análise de Pessoas Expostas Politicamente (PEP)</h3>
+            <p>Identificação de indivíduos com cargos públicos e seus familiares, essencial para escritórios de advocacia em processos de auditoria e indústrias em projetos que envolvam órgãos do governo.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#fff3e0"><svg fill="#f57c00" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+          <div>
+            <h3>Certidões Negativas e Sanções</h3>
+            <p>Verificação de certidões negativas de débitos federais, estaduais e municipais, além de listas de sanções nacionais e internacionais para garantir a idoneidade de parceiros comerciais, clientes e fornecedores.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#fce4ec"><svg fill="#c2185b" viewBox="0 0 24 24"><path d="M12 1L3 6v6c0 5 3.8 9.8 9 11 5.2-1.2 9-6 9-11V6L12 1zM12 18.5c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/><path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+          <div>
+            <h3>Checagem de Antecedentes e Mídias</h3>
+            <p>Consulta de informações em bases de dados criminais, processos judiciais e mídias negativas, ideal para avaliar o histórico de clientes e colaboradores, especialmente para o setor imobiliário e jurídico.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#ede7f6"><svg fill="#4527a0" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></svg></div>
+          <div>
+            <h3>Validação de Identidade e Endereços</h3>
+            <p>Conferência de dados cadastrais para garantir que as informações de clientes e partes envolvidas estejam atualizadas e corretas, fundamental para a prevenção de fraudes e em processos de *due diligence*.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#e8f5e9"><svg fill="#2e7d32" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.24 7.24l-6.48 6.48-2.24-2.24L7.52 12l2.24 2.24L14.48 9.52l-2.24-2.24L9.52 12l-2.24 2.24L10.52 17.52l-2.24-2.24L14.48 9.52z"/></svg></div>
+          <div>
+            <h3>Auditoria e Monitoramento de Fornecedores</h3>
+            <p>Acompanhamento contínuo da situação de fornecedores para garantir que eles também estejam em conformidade, reduzindo riscos para sua cadeia de suprimentos e projetos.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="feature-row">
+          <div class="feature-ico" style="background:#ffebee"><svg fill="#c62828" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg></div>
+          <div>
+            <h3>Detecção de Fraudes e Lavagem de Dinheiro (AML)</h3>
+            <p>Análise de risco para identificar operações suspeitas e atividades financeiras irregulares, crucial para a proteção do setor imobiliário e para empresas que lidam com grandes transações financeiras.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container" style="text-align:center">
+    <h2>Garanta a segurança e a credibilidade do seu negócio</h2>
+    <p class="lead">Com a APinformação, a conformidade se torna um aliado estratégico. Fale com nossos especialistas e descubra como nossas soluções de Compliance e LGPD podem proteger sua empresa.</p>
+    <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=5511948962888&text=Olá!%20Tenho%20interesse%20nas%20soluções%20de%20Compliance%20e%20LGPD." target="_blank">Fale com um especialista</a>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 APinformação — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
